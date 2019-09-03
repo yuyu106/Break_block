@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SpaceStart : MonoBehaviour {
     [SerializeField]
-    GameObject Button;
+    GameObject button;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class SpaceStart : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Space))
         {
-            Button.GetComponent<ButtonStart>().OnClick();
+            button.GetComponent<ButtonStart>().OnClick();
  //           SceneManager.LoadScene("Main");
         }
 	}

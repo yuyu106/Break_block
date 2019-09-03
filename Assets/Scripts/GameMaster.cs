@@ -22,6 +22,8 @@ public class GameMaster : MonoBehaviour {
 
     public int[] fruitesNum;
 
+    public GameObject[] uniqueNum = new GameObject[60];
+
 	// Use this for initialization
 	void Start () {
         nowTime = 0;
@@ -43,28 +45,38 @@ public class GameMaster : MonoBehaviour {
 
         if(TimeLimit < 0)
         {
-            GameOver("Game Over", "また挑戦してね！", resultStatus.GameOver);
+            GameOver(resultStatus.GAMEOVER);
         }
 
         if(boxNum <= 0 || score >= MaxScore)
         {
-            GameOver("Game Clear"," " + nowTime.ToString("F0") + "秒でクリア！",resultStatus.GameClear );
+            GameOver(resultStatus.GAMECLEAR );
         }
 
 
         //華ちゃん用
         if (Input.GetKey(KeyCode.Space))
         {
-            player.transform.localScale = new Vector3(1f, 1f, 5f);
+            player.transform.localScale = new Vector3(1f, 1f, 4f);
         }
     }
 
-    public void GameOver(string result, string resultMessage, resultStatus resultStatus)
+    public void GameOver(resultStatus result)
     {
-        DataSender.result = result;
-        DataSender.resultMessage = resultMessage;
+        if(result == resultStatus.GAMECLEAR)
+        {
+            DataSender.result = "Game Clear";
+            DataSender.resultMessage = "おめでとう!";
+        }
+        else
+        {
+            DataSender.result = "Game Over";
+            DataSender.resultMessage = (score >= (MaxScore * 0.8)) ? "もう少し！" : "もっとがんばろう";
+        }
+        
+        
         DataSender.score = score;
-        DataSender.resultStatus = resultStatus;
+        DataSender.resultStatus = result;
         SceneManager.LoadScene("Result");
     }
 }

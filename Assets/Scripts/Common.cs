@@ -1,12 +1,21 @@
 ﻿public enum resultStatus
 {
-    GameClear,
-    GameOver
+    GAMECLEAR,
+    GAMEOVER
 }
 
 public enum collisionAction
 {
     DESTROY,
-    Freeze
+    FREEZE,
+    BOM
 }
+
+public enum SE
+{
+    WOOD,
+    METAL,
+    BOM
+}
+
 

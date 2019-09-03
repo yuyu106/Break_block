@@ -25,7 +25,7 @@ public class TextFetcher : MonoBehaviour {
         resultMessageText.text = DataSender.resultMessage;
         score.text = DataSender.score.ToString() + "点";
 
-        bgm.clip = (DataSender.resultStatus == resultStatus.GameOver) ? gameOver : gameClear;
+        bgm.clip = (DataSender.resultStatus == resultStatus.GAMEOVER) ? gameOver : gameClear;
 
         bgm.Play();
 	}

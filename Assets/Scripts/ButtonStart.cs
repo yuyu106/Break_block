@@ -11,12 +11,15 @@ public class ButtonStart : MonoBehaviour
     private AudioSource buttonSE;
     [SerializeField]
     private RectTransform greenPepper;
+    [SerializeField]
+    private GameObject[] gameObjects;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObjects[2].SetActive(false);
+        gameObjects[3].SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,15 +30,19 @@ public class ButtonStart : MonoBehaviour
 
     public void OnClick()
     {
+        cutleryOpen();
+
         greenPepper.DOLocalJump(
             Vector3.one,
-            50,
+            40,
             1,
-            1.0f
+            0.8f
         );
 
         buttonSE.Play();
-        Invoke("loadScene", 1.0f);
+
+        Invoke("cutleryClose", 0.6f);
+        Invoke("loadScene", 0.8f);
 
 
 
@@ -47,12 +54,28 @@ public class ButtonStart : MonoBehaviour
 
     public void OnPointerEnter()
     {
-            Debug.Log("Mouse is over GameObject.");
+        cutleryOpen();
     }
 
     public void  OnPointerExsit()
     {
-            Debug.Log("Mouse is no longer on GameObject.");
+        cutleryClose();
+    }
+
+    private void cutleryOpen()
+    {
+        gameObjects[0].SetActive(false);
+        gameObjects[1].SetActive(false);
+        gameObjects[2].SetActive(true);
+        gameObjects[3].SetActive(true);
+    }
+
+    private void cutleryClose()
+    {
+        gameObjects[0].SetActive(true);
+        gameObjects[1].SetActive(true);
+        gameObjects[2].SetActive(false);
+        gameObjects[3].SetActive(false);
     }
 
 }

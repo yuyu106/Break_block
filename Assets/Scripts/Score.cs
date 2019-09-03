@@ -14,6 +14,7 @@ public class Score : MonoBehaviour
     [SerializeField]
     private RectTransform rectTransform;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,8 @@ public class Score : MonoBehaviour
 
     public void scoreBoard(int score)
     {
+
+        int scoreTimes = master.GetComponent<GameMaster>().score / 1000;
         Debug.Log("スコアボード呼んだ");
         master.GetComponent<GameMaster>().score += score;
 
@@ -35,7 +38,7 @@ public class Score : MonoBehaviour
         rectTransform.localScale = Vector3.one;
         rectTransform.DOPunchScale
         (
-            new Vector3(1.2f, 1.2f, 1.2f),
+            new Vector3(1.0f, 1.0f, 1.0f),
             0.2f
         );
 

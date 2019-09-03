@@ -1,22 +1,28 @@
 fileFormatVersion: 2
-guid: 65ab45f18e4bca04aafdc47a26714598
+guid: 072bcc36e146dc54b9c42254297fd3d8
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: b_pepper_2_083_main
-    100004: b_pepper_2_083_stems
+    100002: Camera
+    100004: Lamp
+    100006: Regular_Bomb
+    100008: UCX_Regular_Bomb
     400000: //RootNode
-    400002: b_pepper_2_083_main
-    400004: b_pepper_2_083_stems
-    2100000: b_pepper_2_083_mainMat
-    2100002: b_pepper_2_083_stemsMat
-    2300000: b_pepper_2_083_main
-    2300002: b_pepper_2_083_stems
-    3300000: b_pepper_2_083_main
-    3300002: b_pepper_2_083_stems
-    4300000: b_pepper_2_083_main
-    4300002: b_pepper_2_083_stems
+    400002: Camera
+    400004: Lamp
+    400006: Regular_Bomb
+    400008: UCX_Regular_Bomb
+    2000000: Camera
+    2100000: No Name
+    2100002: Material
+    2300000: Regular_Bomb
+    2300002: UCX_Regular_Bomb
+    3300000: Regular_Bomb
+    3300002: UCX_Regular_Bomb
+    4300000: UCX_Regular_Bomb
+    4300002: Regular_Bomb
+    10800000: Lamp
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -48,7 +54,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1

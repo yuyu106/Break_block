@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallSE : MonoBehaviour
+public class BoxSE : MonoBehaviour
 
 {
     [SerializeField]
-    private AudioSource[] collisionSE;
-
+    private GameObject mastar;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +18,8 @@ public class BallSE : MonoBehaviour
     {
         
     }
-
-    public void PlaySE(SE se)
+    private void OnCollisionEnter(Collision collision)
     {
-        collisionSE[(int)se].Play();
+        mastar.GetComponent<BallSE>().PlaySE(SE.WOOD);
     }
 }

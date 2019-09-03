@@ -63,12 +63,16 @@ public class BoxInit : MonoBehaviour {
                 }
            
 
-                g.GetComponent<Fruites>().fruiteName = fruiteName[scoreRandom];
-                g.GetComponent<Fruites>().score = score[scoreRandom];
-                g.GetComponent<Fruites>().collisionAction = collisionAction[scoreRandom];
+                g.GetComponent<Fruits>().fruiteName = fruiteName[scoreRandom];
+                g.GetComponent<Fruits>().score = score[scoreRandom];
+                g.GetComponent<Fruits>().collisionAction = collisionAction[scoreRandom];
 
-                g.GetComponent<Fruites>().masterObj = masterObj;
-                g.GetComponent<Fruites>().scoreBoard = scoreBoard;
+                g.GetComponent<Fruits>().masterObj = masterObj;
+                g.GetComponent<Fruits>().scoreBoard = scoreBoard;
+
+                masterObj.GetComponent<GameMaster>().uniqueNum[10 * y + x] = g;
+                g.GetComponent<Fruits>().uniqueNumX = x;
+                g.GetComponent<Fruits>().uniqueNumY = y;
 
 
  //               g.GetComponent<Renderer>().material = materials[scoreRandom];
