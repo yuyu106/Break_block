@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
+using Data;
 
 public class ButtonStart : MonoBehaviour
 {
@@ -12,8 +13,18 @@ public class ButtonStart : MonoBehaviour
     [SerializeField]
     private RectTransform greenPepper;
     [SerializeField]
+    private RectTransform greenPepper2 = null;
+    [SerializeField]
+    private RectTransform greenPepper3 = null;
+    [SerializeField]
     private GameObject[] gameObjects;
+    [SerializeField]
+    private difficulty difficulty;
 
+    [SerializeField]
+    private GameObject config;
+
+    public SelectableData data;
 
     // Start is called before the first frame update
     void Start()
@@ -28,21 +39,56 @@ public class ButtonStart : MonoBehaviour
         
     }
 
+
     public void OnClick()
     {
+
+        //データセット
+        if(difficulty != difficulty.SET)
+        {
+            DataSet.Instance.data = SettingDataUtility.GetDifficltySelectableData(difficulty);
+        }
+        else
+        {
+            DataSet.Instance.data = config.GetComponent<ConfigData>().getData();
+        }
+
+
         cutleryOpen();
 
         greenPepper.DOLocalJump(
-            Vector3.one,
+            greenPepper.transform.localPosition,
             40,
             1,
             0.8f
-        );
+        )
+        .OnComplete(() => loadScene());
+
+        if(greenPepper2 != null)
+        {
+            greenPepper2.DOLocalJump(
+                greenPepper2.transform.localPosition,
+                30,
+                1,
+                0.6f
+            );
+        }
+
+
+        if (greenPepper3 != null)
+        {
+            greenPepper3.DOLocalJump(
+                greenPepper3.transform.localPosition,
+                20,
+                1,
+                0.6f
+            );
+        }
 
         buttonSE.Play();
 
         Invoke("cutleryClose", 0.6f);
-        Invoke("loadScene", 0.8f);
+//        Invoke("loadScene", 0.8f);
 
 
 
@@ -54,6 +100,7 @@ public class ButtonStart : MonoBehaviour
 
     public void OnPointerEnter()
     {
+        Debug.Log("触った");
         cutleryOpen();
     }
 

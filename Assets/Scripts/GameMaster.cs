@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using Data;
 
 public class GameMaster : MonoBehaviour {
 
@@ -11,7 +12,6 @@ public class GameMaster : MonoBehaviour {
     public float nowTime;
     public int score;
     public float TimeLimit;
-
 
     [SerializeField]
     private Text timeText;
@@ -27,10 +27,17 @@ public class GameMaster : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         nowTime = 0;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        /*
+                //試しに
+                Debug.Log(ButtonStart.se)
+
+        */
+        
+
+    }
+
+    // Update is called once per frame
+    void Update () {
         nowTime += Time.deltaTime;
         TimeLimit -= Time.deltaTime;
         string minuteLimit = ((int)TimeLimit / 60).ToString();
@@ -52,7 +59,7 @@ public class GameMaster : MonoBehaviour {
         {
             GameOver(resultStatus.GAMECLEAR );
         }
-
+//        Data.SettingDataUtility.GetDifficltySelectableData();
 
         //華ちゃん用
         if (Input.GetKey(KeyCode.Space))
@@ -78,5 +85,10 @@ public class GameMaster : MonoBehaviour {
         DataSender.score = score;
         DataSender.resultStatus = result;
         SceneManager.LoadScene("Result");
+    }
+
+    public void setMaxScore(int n)
+    {
+        MaxScore = n;
     }
 }

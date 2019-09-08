@@ -18,4 +18,23 @@ public enum SE
     BOM
 }
 
+public enum difficulty
+{
+    EASY,
+    NOMAL,
+    HARD,
+    SET
+}
+
+public enum configurable
+{
+    BOM,
+    RACKETSIZE,
+    RACKETSPEED,
+    PASSSCORE,
+    BALLSIZE,
+    BLOCKSIZE,
+    TIMELIMIT
+}
+
 

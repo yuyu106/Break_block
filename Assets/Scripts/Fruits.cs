@@ -132,6 +132,7 @@ public class Fruits : MonoBehaviour {
             {
                 return;
             }
+
         isHit = true;
 
             /*

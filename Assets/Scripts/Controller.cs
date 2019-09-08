@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour {
 
-    double yuka = 10/2 - 0.1;
-    double player = 1.3/2;
-
     [SerializeField]
     private GameObject master;
     [SerializeField]
@@ -14,27 +11,27 @@ public class Controller : MonoBehaviour {
     [SerializeField]
     private GameObject leftWall;
 
-    private float rightSpeed;
-    private float leftSpeed;
+//    private float rightSpeed;
+//   private float leftSpeed;
+
+    public float speed;
 
 	// Use this for initialization
 	void Start () {
-        rightSpeed = 0.1f;
-        leftSpeed = 0.1f;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 tmp = transform.position;
-        float z = tmp.z;
 
 		if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position += transform.forward * leftSpeed;
+            Debug.Log("Left Key  " + speed);
+            transform.position += transform.forward * speed;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position -= transform.forward * rightSpeed;
+            transform.position -= transform.forward * speed;
         }
 	}
 

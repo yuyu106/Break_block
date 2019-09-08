@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Data;
 
 public class BoxInit : MonoBehaviour {
 
@@ -20,12 +21,47 @@ public class BoxInit : MonoBehaviour {
     private int type;
     [SerializeField]
     private GameObject scoreBoard;
+    [SerializeField]
+    private GameObject racket;
+    [SerializeField]
+    private GameObject racketSpeed;
+    [SerializeField]
+    private GameObject Ball;
 
     [SerializeField]
     private GameObject masterObject;
 
     void Awake()
     {
+        SelectableData data = DataSet.Instance.data;
+
+        //爆弾の数
+        masterObject.GetComponent<GameMaster>().fruitesNum[collisionAction.Length - 1] = data.bomNum;
+        //ラケットサイズ
+        racket.transform.localScale = new Vector3(1,1,data.racketSize);
+        //ラケットのスピード
+        racketSpeed.GetComponent<Controller>().speed = data.racketSpeed;
+        //クリア得点
+        masterObject.GetComponent<GameMaster>().setMaxScore(data.passScore);
+        //ボールサイズ
+        float size = Ball.transform.localScale.x;
+        Ball.transform.localScale = new Vector3(size * data.ballSize,size *  data.ballSize, size * data.ballSize);
+        //ブロックの大きさ
+        foreach(GameObject prefab in boxObjPrefab)
+        {
+            float x = prefab.transform.localScale.x;
+            float y = prefab.transform.localScale.y;
+            float z = prefab.transform.localScale.z;
+
+            prefab.transform.localScale = new Vector3(x * data.blockSize, y * data.blockSize, z * data.blockSize);
+
+        }
+        //制限時間
+        masterObject.GetComponent<GameMaster>().TimeLimit = data.timeLimit;
+
+
+
+
 
         GameObject masterObj = GameObject.Find("Master");
 
