@@ -12,6 +12,9 @@ public class OpenConfig : MonoBehaviour
     [SerializeField]
     private GameObject[] cutlery;
 
+    [SerializeField]
+    private CanvasGroup canvasGroup;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +32,21 @@ public class OpenConfig : MonoBehaviour
     {
         if(config.activeSelf == true)
         {
+            /*
             config.transform.DOLocalMove(
                 new Vector3(0f, -650f, 0f),
                 0.5f
                 )
                 .OnComplete(() => config.SetActive(false));
+            */
+
+            canvasGroup.DOFade(0.0f,0.5f);
+            config.transform.DOScale(
+                new Vector3(0, 0, 0),
+                0.5f
+                )
+                .OnComplete(() => config.SetActive(false)
+                );
 
             cutlery[0].SetActive(true);
             cutlery[1].SetActive(true);
@@ -42,8 +55,10 @@ public class OpenConfig : MonoBehaviour
         }
         else
         {
+            
             config.transform.localPosition = new Vector3(0f, -20f, 0f);
             config.transform.localScale = new Vector3(0f, 0f, 0f);
+            canvasGroup.DOFade(1.0f,0.5f);
             config.SetActive(true);
             config.transform.DOScale(
                 Vector3.one,
